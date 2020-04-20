@@ -1,0 +1,6 @@
+SIZE : 1, 4, 8, 16
+TYPE : char, signed-int, unsigned-int, float, bool, pointer
+
+if [TYPE] = "char" then [SIZE] = 1;
+if [TYPE] = "bool" then [SIZE] = 1;
+if [TYPE] = "pointer" then [SIZE] = 8;
