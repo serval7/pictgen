@@ -55,14 +55,21 @@ if __name__ == '__main__':
         check_file(template_file)
         pict_table = np.genfromtxt(pict_file, delimiter="\t", dtype=str)
         
+        with open(file=template_file, mode='r') as f:
+            template_origin = f.read()
+
         digit_len=len(str(len(pict_table)))
         format_str = "{:0" + str(digit_len) + "}"
 
-        print (pict_table)
+        # print (pict_table)
         for i, pict_row in enumerate(pict_table[1:], start=1) :
             output_file_name = output_file + format_str.format(i) + extension
-            print (output_file_name)
-            # for pict_element in pict_row :
-            #     print (pict_element)
+            template_modified = template_origin
+            
+            with open(file=output_file_name, mode='w') as f:
+                for col, pict_element in enumerate(pict_row) :
+                    old_str = "${" + pict_table[0,col] + "}"
+                    template_modified = template_modified.replace(old_str,pict_element)
+                f.write(template_modified)
                 
 
