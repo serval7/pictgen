@@ -88,9 +88,8 @@ if __name__ == '__main__':
                     old_str = "${" + pict_table[0,col] + "}"
                     template_modified = template_modified.replace(old_str,pict_element)
 
-        print (csv_content)
         with open(output_file + ".csv", "w") as f:
-            writer = csv.writer(f, lineterminator=",")
+            writer = csv.writer(f)
             writer.writerows(csv_content)
                 
 
