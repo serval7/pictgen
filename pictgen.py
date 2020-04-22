@@ -87,6 +87,7 @@ if __name__ == '__main__':
                 for col, pict_element in enumerate(pict_row) :
                     old_str = "${" + pict_table[0,col] + "}"
                     template_modified = template_modified.replace(old_str,pict_element)
+                f.write(template_modified)
 
         with open(output_file + ".csv", "w") as f:
             writer = csv.writer(f)
